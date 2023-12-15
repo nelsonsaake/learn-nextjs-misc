@@ -8,7 +8,8 @@
 - Next.js Tutorial - 60 - Static HTML Export
 - Next.js Tutorial - 61 - TypeScript Support
 - Next.js Tutorial - 62 - Preview Mode
-
+- Next.js Tutorial - 63 - Redirects
+- Next.js Tutorial - 64 - Environment Variables
 
 ## HEAD/METADATA REFERENCES 
 
@@ -39,3 +40,31 @@ for dynamic images
 - next build: build the app (to be run on a node server)
 - next start: run the built app (on a node server)
 - next export: export to static files 
+
+## REDIRECT 
+
+`next.config.js`
+<pre>
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    // output: 'export',
+    images: { unoptimized: true },
+    redirects: async () => {
+        return [
+            {
+                source: '/about',
+                destination: '/',
+                permanent: true,
+            }
+        ]
+    }
+}
+
+module.exports = nextConfig
+
+</pre>
+
+## ENVIROMENT VARIABLES (PAGE ROUTER)
+
+.env variable can't be printed out to the browser unless prefixed by `NEXT_PUBLIC`
